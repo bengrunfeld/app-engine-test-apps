@@ -1,0 +1,11 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "Basic hello world app for Google App Engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Ben Grunfeld",
+  "license": "ISC"
+}

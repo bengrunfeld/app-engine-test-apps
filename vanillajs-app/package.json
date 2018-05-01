@@ -1,0 +1,15 @@
+{
+  "name": "vanillajs-app",
+  "version": "1.0.0",
+  "description": "A Vanilla JS app for Google App Engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Javascript",
+    "Google App Engine"
+  ],
+  "author": "Ben Grunfeld",
+  "license": "ISC"
+}
