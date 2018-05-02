@@ -2,14 +2,26 @@
   "name": "vanillajs-app",
   "version": "1.0.0",
   "description": "A Vanilla JS app for Google App Engine",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "test"
+    "deploy": "gcloud app deploy",
+    "build": "webpack",
+    "start": "npm run build && node src/app.js"
   },
-  "keywords": [
-    "Javascript",
-    "Google App Engine"
-  ],
+  "engines": {
+    "node": ">=4.3.2"
+  },
   "author": "Ben Grunfeld",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "requiresKeyFile": true,
+  "requiresProjectId": true,
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-node-externals": "^1.7.2"
+  }
 }

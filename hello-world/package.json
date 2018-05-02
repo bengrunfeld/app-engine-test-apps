@@ -2,10 +2,19 @@
   "name": "hello-world",
   "version": "1.0.0",
   "description": "Basic hello world app for Google App Engine",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "test"
+    "deploy": "gcloud app deploy",
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": ">=4.3.2"
   },
   "author": "Ben Grunfeld",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "requiresKeyFile": true,
+  "requiresProjectId": true
 }
