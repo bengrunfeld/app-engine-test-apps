@@ -2,10 +2,11 @@
   "name": "vanillajs-app",
   "version": "1.0.0",
   "description": "A Vanilla JS app for Google App Engine",
-  "main": "src/app.js",
+  "main": "./src/index.js",
   "scripts": {
     "deploy": "gcloud app deploy",
-    "build": "webpack",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
     "start": "npm run build && node src/app.js"
   },
   "engines": {
@@ -19,7 +20,13 @@
   "requiresKeyFile": true,
   "requiresProjectId": true,
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.1.2",
     "webpack-node-externals": "^1.7.2"
