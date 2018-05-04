@@ -9,6 +9,7 @@ module.exports = {
   module: {
     rules: [
       {
+        // Transpiles ES6-8 into ES5
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -16,6 +17,8 @@ module.exports = {
         }
       },
       {
+        // Loads the javacript into html template provided
+        // entry point is set below in HtmlWebPackPlugin in Plugins 
         test: /\.html$/,
         use: [
           {
@@ -25,8 +28,14 @@ module.exports = {
         ]
       },
       {
+        // Loads CSS into a file when you import it via Javascript
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
+      },
+      {
+        // Loads images into CSS and Javascript files
+        test: /\.jpg$/,
+        use: [{loader: "url-loader"}]
       }
     ]
   },

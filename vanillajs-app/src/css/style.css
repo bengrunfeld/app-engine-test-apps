@@ -2,3 +2,10 @@ h1 {
   font-family: helvetica;
   color: darkred;
 }
+
+#app {
+  width: 600px;
+  height: 600px;
+  background: url('../img/bg.jpg');
+  background-size: 600px;
+}
