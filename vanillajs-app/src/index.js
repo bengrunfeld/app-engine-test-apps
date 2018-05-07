@@ -1,12 +1,40 @@
+import path from 'path'
 import express from 'express'
-
-const app = express()
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import config from '../webpack.config.js'
 
 import style from './css/style.css'
 
-app.get('/', (req, res) => {
-    res.status(200).send('Hello world').end()
+// console.log('-------->>>> CONFIG', config)
+
+const app = express(),
+            DIST_DIR = __dirname,
+            HTML_FILE = path.join(DIST_DIR, 'index.html'),
+            compiler = webpack(config())
+
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: config.output.publicPath
+}))
+
+app.get('*', (req, res, next) => {
+
+  compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
+  if (err) {
+    return next(err)
+  }
+  res.set('content-type', 'text/html')
+  res.send(result)
+  res.end()
+  })
 })
+
+
+// app.use(express.static(DIST_DIR))
+
+// app.get('*', (req, res) => {
+//     res.sendFile(HTML_FILE)
+// })
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
