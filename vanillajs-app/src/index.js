@@ -2,16 +2,14 @@ import path from 'path'
 import express from 'express'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
-import config from '../webpack.config.js'
+import config from '../webpack.dev.config.js'
 
 import style from './css/style.css'
-
-// console.log('-------->>>> CONFIG', config)
 
 const app = express(),
             DIST_DIR = __dirname,
             HTML_FILE = path.join(DIST_DIR, 'index.html'),
-            compiler = webpack(config())
+            compiler = webpack(config)
 
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath
