@@ -16,3 +16,13 @@ App can be run locally on your machine, or pushed to Google App Engine Flexible 
 
     npm run deploy
 
+## Issues with App Engine Flex
+
+Google App Engine Flex was issuing an error if Webpack was imported into the server file, so I separated the files into `server.js` and `server-dev.js` and updated `npm scripts` and `webpack.config.js`. 
+
+Now the prod server file, `server.js` contains no code that is connected to running a local development server. 
+
+This reduced code-bloat in production and clearly defines the two separate processes - dev and prod - which are quite different. 
+
+Monkey wrenching all the code into a single file might be confusing to a reader, and may lead to unintended bugs.
+
