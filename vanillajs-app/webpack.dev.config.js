@@ -9,20 +9,23 @@ const nodeExternals = require('webpack-node-externals')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-// const path = require("path")
+const hotMiddlewareScript = 'webpack-hot-middleware/client';
+
+const path = require("path")
 
 module.exports = {
   entry: {
     server: './src/server/server.js',
-    main: './src/index.js'
+    // main: './src/index.js',
+
+    // Webpack Hot Middleware
+    client: ['./src/index.js', hotMiddlewareScript],
   },
   output: {
-    path: '/Users/ben/Desktop/Work/code/gae-test-apps/vanillajs-app/dist',
+    path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].js'
   },
-  // Hot Module Replacement
-  // entry: ["webpack-hot-middleware/client", "./main"],
   mode: 'development',  // This is the only line that merrits a
                         // second config file. No way to set it otherwise
                         // since webpack-dev-middleware cannot consume a 
@@ -30,6 +33,7 @@ module.exports = {
                         // dev|prod mode. We only need dev mode here
                         // since webpack-dev-middleware is only used for dev
   target: 'node',
+  devtool: '#source-map',
   node: {
     // Need this when working with express, otherwise the build fails
     __dirname: false,   // if you don't put this is, __dirname
@@ -78,7 +82,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    // Use NoErrorsPlugin for webpack 1.x
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 }
 
