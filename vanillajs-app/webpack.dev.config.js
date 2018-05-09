@@ -9,7 +9,8 @@ const nodeExternals = require('webpack-node-externals')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-const hotMiddlewareScript = 'webpack-hot-middleware/client';
+// There's a problem with Webpack HMR - left comment on issue
+const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000';
 
 const path = require("path")
 
