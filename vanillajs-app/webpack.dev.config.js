@@ -16,7 +16,7 @@ const path = require("path")
 
 module.exports = {
   entry: {
-    server: './src/server/server.js',
+    server: './src/server/server-dev.js',
     // main: './src/index.js',
 
     // Webpack Hot Middleware
@@ -34,7 +34,6 @@ module.exports = {
                         // dev|prod mode. We only need dev mode here
                         // since webpack-dev-middleware is only used for dev
   target: 'node',
-  devtool: '#source-map',
   node: {
     // Need this when working with express, otherwise the build fails
     __dirname: false,   // if you don't put this is, __dirname

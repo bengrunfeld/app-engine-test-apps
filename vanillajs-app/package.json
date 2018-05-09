@@ -6,7 +6,8 @@
   "scripts": {
     "deploy": "gcloud app deploy",
     "dev": "rm -rf dist && webpack --config webpack.dev.config.js",
-    "build": "webpack --mode production",
+    "build": "rm -rf dist && webpack --mode production",
+    "devserver": "node ./dist/server.js",
     "start": "node ./dist/server.js"
   },
   "engines": {

@@ -15,12 +15,16 @@ module.exports = (env, argv) => {
   const MODE = (argv) ? argv.mode : 'production'
 
   return {
+    entry: {
+      server: './src/server/server.js',
+      main: './src/index.js'
+    },
     output: {
-      path: path.join(__dirname, "dist"),
-      publicPath: '/'
+      path: path.join(__dirname, 'dist'),
+      publicPath: '/',
+      filename: '[name].js'
     },
     mode: MODE,
-    devtool: '#source-map',
     target: 'node',
     node: {
       // Need this when working with express, otherwise the build fails
