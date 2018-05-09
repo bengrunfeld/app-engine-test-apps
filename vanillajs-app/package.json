@@ -5,9 +5,9 @@
   "main": "./src/index.js",
   "scripts": {
     "deploy": "gcloud app deploy",
-    "dev": "webpack --mode development",
+    "dev": "rm -rf dist && webpack --config webpack.dev.config.js",
     "build": "webpack --mode production",
-    "start": "node ./dist/main.js"
+    "start": "node ./dist/server.js"
   },
   "engines": {
     "node": ">=4.3.2"

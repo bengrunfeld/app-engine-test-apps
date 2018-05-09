@@ -4,21 +4,25 @@
  *
  * Note: that prod and dev mode are set in npm scripts.
  */
-
+const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-const path = require("path")
-
-const DIST_DIR   = path.join(__dirname, "dist"),
-      CLIENT_DIR = path.join(__dirname, "src")
+// const path = require("path")
 
 module.exports = {
-  output: {
-    path: DIST_DIR,
-    publicPath: '/'
+  entry: {
+    server: './src/server/server.js',
+    main: './src/index.js'
   },
+  output: {
+    path: '/Users/ben/Desktop/Work/code/gae-test-apps/vanillajs-app/dist',
+    publicPath: '/',
+    filename: '[name].js'
+  },
+  // Hot Module Replacement
+  // entry: ["webpack-hot-middleware/client", "./main"],
   mode: 'development',  // This is the only line that merrits a
                         // second config file. No way to set it otherwise
                         // since webpack-dev-middleware cannot consume a 

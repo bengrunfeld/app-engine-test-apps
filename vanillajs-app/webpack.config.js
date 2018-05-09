@@ -11,15 +11,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 const path = require("path")
 
-const DIST_DIR   = path.join(__dirname, "dist"),
-      CLIENT_DIR = path.join(__dirname, "src")
-
 module.exports = (env, argv) => {
   const MODE = (argv) ? argv.mode : 'production'
 
   return {
     output: {
-      path: DIST_DIR,
+      path: path.join(__dirname, "dist"),
       publicPath: '/'
     },
     mode: MODE,
