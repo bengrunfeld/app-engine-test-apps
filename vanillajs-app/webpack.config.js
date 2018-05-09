@@ -20,6 +20,7 @@ module.exports = (env, argv) => {
       publicPath: '/'
     },
     mode: MODE,
+    devtool: '#source-map',
     target: 'node',
     node: {
       // Need this when working with express, otherwise the build fails
