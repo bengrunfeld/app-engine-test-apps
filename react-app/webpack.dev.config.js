@@ -24,10 +24,13 @@ module.exports = {
     publicPath: '/',
     filename: '[name].js'
   },
-  mode: 'development',  // This is the only line that merrits a
+  mode: 'development',  // webpack-dev-middleware consumes this config file
+                        // so mode needs to be hard-coded, rather than set in
+                        // the npm script as a flag.
+                        // This is the only line that merrits a
                         // second config file. No way to set it otherwise
                         // since webpack-dev-middleware cannot consume a 
-                        // Webpack 4 function, which is how you identify 
+                        // Webpack 4 function, which is how you usually identify 
                         // dev|prod mode. We only need dev mode here
                         // since webpack-dev-middleware is only used for dev
   target: 'node',
