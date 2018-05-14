@@ -34,11 +34,6 @@ module.exports = {
                         // dev|prod mode. We only need dev mode here
                         // since webpack-dev-middleware is only used for dev
   target: 'web',
-  node: {
-    // Need this when working with express, otherwise the build fails
-    __dirname: false,   // if you don't put this is, __dirname
-    __filename: false,  // and __filename return blank or /
-  },
   module: {
     rules: [
       {
