@@ -23,7 +23,7 @@ module.exports = (env, argv) => {
       publicPath: '/',
       filename: '[name].js'
     },
-    mode: 'production',
+    mode: argv.mode,
     target: 'node',
     node: {
       // Need this when working with express, otherwise the build fails

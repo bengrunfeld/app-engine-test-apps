@@ -1,7 +1,7 @@
 {
-  "name": "vanillajs-app",
+  "name": "react-app",
   "version": "1.0.0",
-  "description": "A Vanilla JS app for Google App Engine",
+  "description": "A React app for Google App Engine",
   "main": "./src/index.js",
   "scripts": {
     "deploy": "gcloud app deploy",
