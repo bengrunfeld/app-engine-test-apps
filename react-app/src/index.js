@@ -7,7 +7,7 @@ const Component = () => {
   console.log('Yay!!!!')
   return (
     <div>
-      <h1>Webpack & React</h1>
+      <h1>Webpack & React!</h1>
       <div className='bed'></div>
     </div>
   )

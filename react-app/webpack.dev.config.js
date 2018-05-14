@@ -14,10 +14,10 @@ const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&t
 
 module.exports = {
   entry: {
-    // main: './src/index.js',
+    main: './src/index.js',
 
     // Webpack Hot Middleware
-    client: ['./src/index.js', hotMiddlewareScript],
+    // client: ['./src/index.js', hotMiddlewareScript],
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -33,7 +33,7 @@ module.exports = {
                         // Webpack 4 function, which is how you usually identify 
                         // dev|prod mode. We only need dev mode here
                         // since webpack-dev-middleware is only used for dev
-  target: 'node',
+  target: 'web',
   node: {
     // Need this when working with express, otherwise the build fails
     __dirname: false,   // if you don't put this is, __dirname
