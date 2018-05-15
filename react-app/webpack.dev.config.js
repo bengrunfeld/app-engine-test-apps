@@ -7,10 +7,6 @@
 const path = require("path")
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-
-// There's a problem with Webpack HMR - left comment on issue
-const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000';
 
 module.exports = {
   entry: {
@@ -56,15 +52,12 @@ module.exports = {
         ]
       },
       {
-        // Loads CSS into a file when you import it via Javascript
-        // Rules are set in MiniCssExtractPlugin
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        use: [ 'style-loader', 'css-loader' ]
       },
       {
-        // Loads images into CSS and Javascript files
-        test: /\.jpg$/,
-        use: [{loader: "url-loader"}]
+       test: /\.(png|svg|jpg|gif)$/,
+       use: ['file-loader']
       }
     ]
   },
@@ -73,13 +66,7 @@ module.exports = {
       template: "./src/html/index.html",
       filename: "./index.html",
       excludeChunks: [ 'server' ]
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    })
   ]
 }
 
