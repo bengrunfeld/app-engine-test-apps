@@ -1,19 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Message from './js/Message'
 
-import style from './css/style.css'
+import './css/style.css'
 
 const Component = () => {
-  console.log('Yay!!!!')
   return (
     <div>
-      <h1>Webpack & React!!</h1>
-      <div className='bed'></div>
+      <h1>Express Webpack React Boilerplate by Ben Grunfeld</h1>
+      <Message />
+      <div className="ben"></div>
     </div>
   )
 }
 
 ReactDOM.render(
   <Component />,
-  document.getElementById('react-container')
+  document.getElementById('react-container') // eslint-disable-line no-undef
 )
+
+// Needed for Hot Module Replacement
+module.hot.accept() // eslint-disable-line no-undef

@@ -10,8 +10,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin")
 
 module.exports = {
   entry: {
-    main: './src/index.js',
-
+    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/index.js']
     // Webpack Hot Middleware
     // client: ['./src/index.js', hotMiddlewareScript],
   },
@@ -30,15 +29,24 @@ module.exports = {
                         // dev|prod mode. We only need dev mode here
                         // since webpack-dev-middleware is only used for dev
   target: 'web',
+  devtool: '#source-map',
   module: {
     rules: [
       {
-        // Transpiles ES6-8 into ES5
+        enforce: "pre",
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
+        loader: "eslint-loader",
+        options: {
+          emitWarning: true,
+          failOnError: false,
+          failOnWarning: false
         }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
       },
       {
         // Loads the javacript into html template provided.
@@ -66,7 +74,9 @@ module.exports = {
       template: "./src/html/index.html",
       filename: "./index.html",
       excludeChunks: [ 'server' ]
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 }
 
