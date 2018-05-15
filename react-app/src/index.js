@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Message from './js/Message'
+import namer from './namer'
 
 import './css/style.css'
 
 const Component = () => {
+  namer(5, 6)
   return (
     <div>
       <h1>Express Webpack React Boilerplate by Ben Grunfeld</h1>
