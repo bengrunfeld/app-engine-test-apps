@@ -1,23 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Message from './js/Message'
-import namer from './namer'
 
 import './css/style.css'
 
-const Component = () => {
-  namer(5, 6)
+const Container = () => {
   return (
     <div>
       <h1>Express Webpack React Boilerplate by Ben Grunfeld</h1>
       <Message />
       <div className="ben"></div>
+      <p className='message'>Say hi at <a href='https://github.com/bengrunfeld'>Github</a> or <a href='https://twitter.com/bengrunfeld'>Twitter</a>!</p>
     </div>
   )
 }
 
 ReactDOM.render(
-  <Component />,
+  <Container />,
   document.getElementById('react-container') // eslint-disable-line no-undef
 )
 
